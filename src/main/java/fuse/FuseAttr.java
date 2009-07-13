@@ -82,8 +82,7 @@ public class FuseAttr {
 		private int mtime = 0;
 		private int ctime = 0;
 		
-		private Builder() {
-			
+		private Builder() {	
 		}
 		
 		public FuseAttr build() {

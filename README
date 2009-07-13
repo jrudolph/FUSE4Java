@@ -1,0 +1,8 @@
+
+ = FUSE4Java - Filesystem in Userspace for Java =
+ 
+ FUSE4Java is a recent fork of the stalled Fuse4J project by Peter Lavart.
+ It provides a bit more unified filesystem interface and separated better between
+ the examples, the core library and native elements. The goal is to make it 
+ much easier for third party to rely on Fuse4Java for own projects.
+ 
