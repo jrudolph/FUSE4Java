@@ -10,7 +10,7 @@
 	<modules>
 		<module>core</module>
 		<module>examples</module>
-    <module>native</module>
+    <module>capigen</module>
   </modules>
 <dependencies>
     <dependency>

@@ -2,11 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>fuse</groupId>
-  <artifactId>core</artifactId>
+  <artifactId>fuse-core</artifactId>
   <packaging>nar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>core</name>
+  <name>fuse-core</name>
 <url>http://github.com/dmeister/fuse4java</url>
+
 
 <pluginRepositories>
        <pluginRepository>
@@ -43,10 +44,21 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    <groupId>fuse</groupId>
+    <artifactId>fuse-build-capi-gen</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <scope>provided</scope>
+    </dependency>
   </dependencies>
 
 
-
+<parent>
+    <groupId>fuse</groupId>
+    <artifactId>fuse</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
   <build>
   <plugins>
       <plugin>

@@ -114,7 +114,6 @@ public class FilesystemToFuseFSAdapter implements FuseFS
 		   this.df = df;
 	   }
 	   
-	@Override
 	public void add(String name, long inode, int mode) {
 		df.add(name, inode, mode);
 	}
@@ -735,7 +734,6 @@ public class FilesystemToFuseFSAdapter implements FuseFS
       return errno;
    }
 
-@Override
 public boolean isImplemented(String methodName) {
 	return FilesystemImplCheck.isImplemented(fs.getClass(), methodName);
 }
