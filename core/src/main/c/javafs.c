@@ -272,16 +272,17 @@ static int javafs_getattr(const char *path, struct stat *stbuf)
    JNIEnv *env = get_env();
    jobject jPath = NULL;
    jobject jattr = NULL;
+   jobject jGetattr = NULL;
    jint jerrno = 0;
 
    jPath = (*env)->NewDirectByteBuffer(env, (void *)path, (jlong)strlen(path));
    if (exception_check_jerrno(env, &jerrno)) goto out;
 
    jGetattr = (*env)->NewObject(env, FuseGetattr->class, FuseGetattr->constructor.new);
-   if (exception_check_jerrno(env, &jerrno)) break;
+   if (exception_check_jerrno(env, &jerrno)) goto out;
 
    jattr =  (*env)->CallIntMethod(env, fuseFS, FuseFS->method.getattr__Ljava_nio_ByteBuffer_Lfuse_FuseGetattrSetter_, jPath, jGetattr);
-   if (exception_check_jerrno(env, &jerrno)) break;
+   if (exception_check_jerrno(env, &jerrno)) goto out;
 
    if(!jattr) {
 	   jerrno = ENOENT;
@@ -300,14 +301,12 @@ static int javafs_getattr(const char *path, struct stat *stbuf)
       stbuf->st_atime =  (time_t)((*env)->CallIntMethod(env, jattr, FuseGetattr->field.atime));
       stbuf->st_mtime =  (time_t)((*env)->CallIntMethod(env, jattr, FuseGetattr->field.mtime));
       stbuf->st_ctime =  (time_t)((*env)->CallIntMethod(env, jattr, FuseGetattr->field.ctime));
-
-      break;
-   }
 out:
    // cleanup
 
    if (jPath != NULL) (*env)->DeleteLocalRef(env, jPath);
    if (jattr != NULL) (*env)->DeleteLocalRef(env, jattr);
+   if (jGetattr != NULL) (*env)->DeleteLocalRef(env, JGetattr);
 
    release_env(env);
    return -abs(jerrno);
