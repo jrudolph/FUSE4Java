@@ -10,7 +10,9 @@
 	<modules>
 		<module>core</module>
 		<module>examples</module>
+    <module>capigen</module>
   </modules>
+
 <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -25,8 +27,8 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.5</source>
+          <target>1.5</target>
         </configuration>
       </plugin>
     </plugins>

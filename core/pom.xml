@@ -8,6 +8,7 @@
   <name>fuse-core</name>
 <url>http://github.com/dmeister/fuse4java</url>
 
+
 <pluginRepositories>
        <pluginRepository>
           <id>freehep</id>
@@ -43,10 +44,21 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    <groupId>fuse</groupId>
+    <artifactId>fuse-build-capi-gen</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <scope>provided</scope>
+    </dependency>
   </dependencies>
 
 
-
+<parent>
+    <groupId>fuse</groupId>
+    <artifactId>fuse</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
   <build>
   <plugins>
       <plugin>
